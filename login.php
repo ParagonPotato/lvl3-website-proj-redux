@@ -12,6 +12,7 @@
     $row = mysqli_fetch_array($result);
     if ($row['username'] == $username && $row['password'] == $password ){
         echo "Login successful! Welcome ".$row['username'];
+        header('Location: dashboard.php');
     } else {
         echo "Failed to find user";
     }

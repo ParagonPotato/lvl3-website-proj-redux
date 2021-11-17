@@ -18,5 +18,6 @@ if (!$conn) {
 	echo "registered successfully";
 	$stmt->close();
 	$conn->close();
+    header('Location: dashboard.php');
 }
 ?>
