@@ -14,6 +14,6 @@
         echo "Login successful! Welcome ".$row['name'];
         header('Location: dashboard.php?id='.$row['id']);
     } else {
-        header('Location: index.php?status=loginerror');
+        header('Location: index.php?loginerror=t');
     }
 ?>

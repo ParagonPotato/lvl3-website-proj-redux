@@ -31,6 +31,16 @@
       margin-bottom:30px;
     }
 
+    h3 {
+      font-size:12px;
+      color:red;
+    }
+
+    h4 {
+      font-size:16px;
+      color:black;
+    }
+
     input {
       width:10%;
       height:10%;
@@ -111,27 +121,24 @@
 </header>
 </html>
 
-<?php
-
-    if (isset($_GET['loginerror'])) {
-      $loginerror=$_GET['loginerror'];
-    }
-
-?>
-
 <!DOCTYPE html>
 
 <ul>
-  <li class="navbar" style="float:left;"><a href="#home">lost  /  found</a></li>
+  <li class="navbar" style="float:left;"><a href="index.php">lost  /  found</a></li>
 </ul>
 
 
 <h1>lost  /  found</h1>
 <h2>login or register to search or upload lost items</h2>
+
+<?php if(isset($_GET['loginerror'])) : ?>
+  <h3>There was an error logging in, this is probably human error. Give it another whirl logging in.</h3>
+<?php endif; ?>
+
 <table>
 	<tr>
     <th><div style="margin-left:50%;">
-          <h3>Register</h3>
+          <h4>Register</h4>
           <form action="register.php" method="post">
             <input id="namebox" name="username" placeholder="Register: Username" type="text"><br>
             <input id="agebox" name="password" placeholder="Register: Password" type="text"><br>
@@ -139,7 +146,7 @@
           </form>
       </div>
     <th><div style="margin-right:50%;">
-          <h3>Login</h3>
+          <h4>Login</h4>
           <form action="login.php" method="post">
             <input id="namebox" name="username" placeholder="Login: Username" type="text"><br>
             <input id="agebox" name="password" placeholder="Login: Password" type="text"><br>
