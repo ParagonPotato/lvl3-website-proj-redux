@@ -113,7 +113,9 @@
 
 <?php
 
+    if (isset($_GET['loginerror'])) {
       $loginerror=$_GET['loginerror'];
+    }
 
 ?>
 
