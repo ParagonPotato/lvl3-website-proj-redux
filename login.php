@@ -14,6 +14,6 @@
         echo "Login successful! Welcome ".$row['name'];
         header('Location: dashboard.php?id='.$row['id']);
     } else {
-        echo "Failed to find user";
+        header('Location: index.php?status=loginerror');
     }
 ?>
