@@ -111,6 +111,15 @@
 </header>
 </html>
 
+<?php
+    if (!isset($_GET['id'])) {
+        header('Location: index.php');
+        exit();
+    }
+
+    $id = $_GET['id'];
+?>
+
 <!DOCTYPE html>
 
 <ul>
@@ -123,7 +132,7 @@
 
 
 <h1>lost  /  found</h1>
-<h2>welcome </h2>
+<h2>welcome <?=$id?></h2>
 <table>
 	<tr>
         <th>
