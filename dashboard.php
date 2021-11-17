@@ -118,13 +118,18 @@
     }
 
     $id = $_GET['id'];
+
+    $conn = mysqli_connect('localhost','root','','digital');
+    $result=mysqli_query($conn,"SELECT * FROM `users` WHERE id='$id'");
+    $row=mysqli_fetch_array($result);
+    $username=$row[1];
 ?>
 
 <!DOCTYPE html>
 
 <ul>
-  <li class="navbar" style="float:left;"><a href="dashboard.php">lost  /  found</a></li>
-  <li class="navbar" style="float:left;"><a href="logout.php" style="font-size:12px;letter-spacing:1px;">logout</a></li>
+  <li class="navbar" style="float:left;"><a href=<?="dashboard.php?id=".$id?> >lost  /  found</a></li>
+  <li class="navbar" style="float:left;"><a href="logout.php" style="font-size:12px;letter-spacing:1px;">logout: <?=$username?></a></li>
   <li class="navbar" style="text-decoration:underline;"><a href="dropoff.php">dropoff</a></li>
   <li class="navbar" style="text-decoration:underline;"><a href="pickup.php">pickup</a></li>
   <li class="navbar" style="text-decoration:underline;"><a href="modify.php">modify</a></li>
@@ -132,7 +137,7 @@
 
 
 <h1>lost  /  found</h1>
-<h2>welcome <?=$id?></h2>
+<h2>welcome <?=$username?></h2>
 <table>
 	<tr>
         <th>

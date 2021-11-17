@@ -130,26 +130,36 @@
 
 <h1>lost  /  found</h1>
 <h2>login or register to search or upload lost items</h2>
-
+<div>
 <?php if(isset($_GET['loginerror'])) : ?>
   <h3>There was an error logging in, this is probably human error. Give it another whirl logging in.</h3>
 <?php endif; ?>
+<?php if(isset($_GET['regusernameempty'])) : ?>
+  <h3>Username is required!</h3>
+<?php endif; ?>
+<?php if(isset($_GET['regusernameduplicate'])) : ?>
+  <h3>Sorry, that username is already taken.</h3>
+<?php endif; ?>
+<?php if(isset($_GET['regpasswordempty'])) : ?>
+  <h3>Password field is required!</h3>
+<?php endif; ?>
+</div>
 
 <table>
 	<tr>
     <th><div style="margin-left:50%;">
           <h4>Register</h4>
           <form action="register.php" method="post">
-            <input id="namebox" name="username" placeholder="Register: Username" type="text"><br>
-            <input id="agebox" name="password" placeholder="Register: Password" type="text"><br>
+            <input id="namebox" name="username" placeholder="Register: Username" type="username"><br>
+            <input id="agebox" name="password" placeholder="Register: Password" type="password"><br>
             <button id="submit" style="margin-top:16px;">REGISTER</button>
           </form>
       </div>
     <th><div style="margin-right:50%;">
           <h4>Login</h4>
           <form action="login.php" method="post">
-            <input id="namebox" name="username" placeholder="Login: Username" type="text"><br>
-            <input id="agebox" name="password" placeholder="Login: Password" type="text"><br>
+            <input id="namebox" name="username" placeholder="Login: Username" type="username"><br>
+            <input id="agebox" name="password" placeholder="Login: Password" type="password"><br>
             <button id="submit" style="margin-top:16px;">LOGIN</button>
           </form>
 </div>
