@@ -11,8 +11,8 @@
                 or die("Something hucked up ".mysql_error());
     $row = mysqli_fetch_array($result);
     if ($row['username'] == $username && $row['password'] == $password ){
-        echo "Login successful! Welcome ".$row['username'];
-        header('Location: dashboard.php');
+        echo "Login successful! Welcome ".$row['name'];
+        header('Location: dashboard.php?id='.$row['id']);
     } else {
         echo "Failed to find user";
     }
