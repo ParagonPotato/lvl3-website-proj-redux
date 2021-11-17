@@ -112,7 +112,6 @@
 
 <h1>lost  /  found</h1>
 <h2>login or register to search or upload lost items</h2>
-sss
 <table>
 	<tr>
 	<th><form action="register.php" method="post">
