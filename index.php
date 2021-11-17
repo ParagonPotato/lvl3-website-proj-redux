@@ -112,6 +112,9 @@
 </html>
 
 <?php
+
+      $loginerror=$_GET['loginerror'];
+
 ?>
 
 <!DOCTYPE html>
