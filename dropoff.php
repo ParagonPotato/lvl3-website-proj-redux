@@ -121,10 +121,28 @@
 </header>
 </html>
 
+<?php
+    if (!isset($_GET['id'])) {
+        header('Location: index.php');
+        exit();
+    }
+
+    $id = $_GET['id'];
+
+    $conn = mysqli_connect('localhost','root','','digital');
+    $result=mysqli_query($conn,"SELECT * FROM `users` WHERE id='$id'");
+    $row=mysqli_fetch_array($result);
+    $username=$row[1];
+?>
+
 <!DOCTYPE html>
 
 <ul>
-  <li class="navbar" style="float:left;"><a href="index.php">lost  /  found</a></li>
+  <li class="navbar" style="float:left;"><a href=<?="dashboard.php?id=".$id?> >lost  /  found</a></li>
+  <li class="navbar" style="float:left;"><a href="logout.php" style="font-size:12px;letter-spacing:1px;">logout: <?=$username?></a></li>
+  <li class="navbar" style="text-decoration:underline;"><a href="dropoff.php">dropoff</a></li>
+  <li class="navbar" style="text-decoration:underline;"><a href="pickup.php">pickup</a></li>
+  <li class="navbar" style="text-decoration:underline;"><a href="modify.php">modify</a></li>
 </ul>
 
 
@@ -145,23 +163,13 @@
 <?php endif; ?>
 </div>
 
-<table>
-	<tr>
-    <th><div style="margin-left:50%;">
-          <h4>Register</h4>
-          <form action="register.php" method="post">
-            <input id="namebox" name="username" placeholder="Register: Username" type="username"><br>
-            <input id="agebox" name="password" placeholder="Register: Password" type="password"><br>
-            <button id="submit" style="margin-top:16px;">REGISTER</button>
-          </form>
-      </div>
-    <th><div style="margin-right:50%;">
-          <h4>Login</h4>
-          <form action="login.php" method="post">
-            <input id="namebox" name="username" placeholder="Login: Username" type="username"><br>
-            <input id="agebox" name="password" placeholder="Login: Password" type="password"><br>
-            <button id="submit" style="margin-top:16px;">LOGIN</button>
-          </form>
+<div>
+    <h4>Log an item</h4>
+    <form action="upload.php" method="post">
+    <input id="namebox" name="name" placeholder="Name" type="text"><br>
+    <input id="agebox" name="date" placeholder="Date" type="date"><br>
+    <input id="agebox" name="category" placeholder="Category" type="text"><br>
+    <input id="agebox" name="value" placeholder="Value" type="text"><br>
+    <button id="submit" style="margin-top:16px;">LOG</button>
+    </form>
 </div>
-  </tr>
-</table>
