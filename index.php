@@ -93,8 +93,18 @@
 	  height:25px;
   }
   table {
+    margin-top:5%;
 	  width: 100%;
   }
+
+  form{
+    width:100%;
+  }
+
+  input {
+    width:60%;
+  }
+
 </style>
 <title>Lost / Found</title>
 </html>
@@ -106,7 +116,6 @@
 
 <ul>
   <li class="navbar" style="float:left;"><a href="#home">lost  /  found</a></li>
-  <!--<li class="navbar"><a>Login Page</a></li>-->
 </ul>
 
 
@@ -114,14 +123,21 @@
 <h2>login or register to search or upload lost items</h2>
 <table>
 	<tr>
-	<th><form action="register.php" method="post">
-		<input id="namebox" name="username" placeholder="Username" type="text"><br>
-		<input id="agebox" name="password" placeholder="Password" type="text"><br>
-		<button id="submit" style="margin-top:16px;">REGISTER</button>
-	</form>
-	<th><form action="login.php" method="post">
-		<input id="namebox" name="username" placeholder="Username" type="text"><br>
-		<input id="agebox" name="password" placeholder="Password" type="text"><br>
-		<button id="submit" style="margin-top:16px;">LOGIN</button>
-	</form>
+    <th><div style="margin-left:50%;">
+          <h3>Register</h3>
+          <form action="register.php" method="post">
+            <input id="namebox" name="username" placeholder="Register: Username" type="text"><br>
+            <input id="agebox" name="password" placeholder="Register: Password" type="text"><br>
+            <button id="submit" style="margin-top:16px;">REGISTER</button>
+          </form>
+      </div>
+    <th><div style="margin-right:50%;">
+          <h3>Login</h3>
+          <form action="login.php" method="post">
+            <input id="namebox" name="username" placeholder="Login: Username" type="text"><br>
+            <input id="agebox" name="password" placeholder="Login: Password" type="text"><br>
+            <button id="submit" style="margin-top:16px;">LOGIN</button>
+          </form>
+</div>
+  </tr>
 </table>
