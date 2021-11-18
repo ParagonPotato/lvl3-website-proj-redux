@@ -31,6 +31,6 @@ if (!$conn) {
 	$stmt->execute();
 	$stmt->close();
 	$conn->close();
-    header('Location: dashboard.php?id='.$id);
+    header('Location: dashboard.php?id='.$id.'regsuccess=t');
 }
 ?>

@@ -33,7 +33,7 @@ if (!$conn) {
 	$stmt = $conn->prepare("insert into users(username,password) values(?,?)");
 	$stmt->bind_param("ss",$username,$password);
 	$stmt->execute();
-    $result=mysqli_query($conn,"SELECT * FROM `users` WHERE username='$username'")
+    $result=mysqli_query($conn,"SELECT * FROM `users` WHERE username='$username'");
     $row=mysqli_fetch_array($result);
 	$stmt->close();
 	$conn->close();
