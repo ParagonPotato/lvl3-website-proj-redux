@@ -165,7 +165,7 @@
 
 <div>
     <h4>Log an item</h4>
-    <form action="upload.php" method="post">
+    <form action=<?="upload.php?id=".$id?> method="post">
     <input id="namebox" name="name" placeholder="Name" type="text"><br>
     <input id="agebox" name="date" placeholder="Date" type="date"><br>
     <input id="agebox" name="category" placeholder="Category" type="text"><br>
