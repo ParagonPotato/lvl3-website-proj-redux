@@ -149,27 +149,12 @@
 
 <h1>lost  /  found</h1>
 <h2>login or register to search or upload lost items</h2>
-<div>
-<?php if(isset($_GET['loginerror'])) : /*This segment (lines 134-145 is just a placeholder since most of what I need is in index already*/?> 
-  <h3>There was an error logging in, this is probably human error. Give it another whirl logging in.</h3>
-<?php endif; ?>
-<?php if(isset($_GET['regusernameempty'])) : ?>
-  <h3>Username is required!</h3>
-<?php endif; ?>
-<?php if(isset($_GET['regusernameduplicate'])) : ?>
-  <h3>Sorry, that username is already taken.</h3>
-<?php endif; ?>
-<?php if(isset($_GET['regpasswordempty'])) : ?>
-  <h3>Password field is required!</h3>
-<?php endif; ?>
-</div>
 
 <div>
     <h4>Log an item</h4>
     <form action=<?="upload.php?id=".$id?> method="post">
     <input id="namebox" name="name" placeholder="Name" type="text"><br>
-    <?php $curDate = date("d/m/Y");echo $curDate; ?>
-    <input id="datebox" name="date" value="<?php echo htmlspecialchars($curDate); ?>" type="date"><br>
+    <input id="datebox" name="date" type="date"><br>
     <input id="locationbox" name="location" placeholder="Location" type="text"><br>
     <input id="categorybox" name="category" placeholder="Category" type="text"><br>
     <input id="valuebox" name="value" placeholder="Value" type="text"><br>
