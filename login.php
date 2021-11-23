@@ -1,4 +1,5 @@
 <?php
+    session_start();
 
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -12,7 +13,8 @@
     $row = mysqli_fetch_array($result);
     if ($row['username'] == $username && $row['password'] == $password ){
         echo "Login successful! Welcome ".$row['name'];
-        header('Location: dashboard.php?id='.$row['id']);
+        $_SESSION['id']=$row['id'];
+        header('Location: dashboard.php');
     } else {
         header('Location: index.php?loginerror=t');
     }
