@@ -9,14 +9,15 @@
     $conn = mysqli_connect("localhost","root","","digital");
 
     //querying
-    $result = mysqli_query($conn,"select * from users where username = '$username' and password = '$passwordhashed'")
+    $result = mysqli_query($conn,"select * from users where username = '$username'")
                 or die("Something hucked up ".mysql_error());
     $row = mysqli_fetch_array($result);
-    if ($row['username'] == $username && password_verify($password,$row['password']) === true ){
+    if ($row['username'] == $username && password_verify($password,$row[2]) ){
         echo "Login successful! Welcome ".$row['name'];
         $_SESSION['id']=$row['user_id'];
         header('Location: dashboard.php');
     } else {
+        echo password_verify($password,$row[2]);
         header('Location: index.php?loginerror=t');
     }
 ?>
