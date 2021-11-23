@@ -131,7 +131,7 @@
     $id = $_SESSION['id'];
 
     $conn = mysqli_connect('localhost','root','','digital');
-    $result=mysqli_query($conn,"SELECT * FROM `users` WHERE id='$id'");
+    $result=mysqli_query($conn,"SELECT * FROM `users` WHERE user_id='$id'");
     $row=mysqli_fetch_array($result);
     $username=$row[1];
 ?>
@@ -168,9 +168,11 @@
     <h4>Log an item</h4>
     <form action=<?="upload.php?id=".$id?> method="post">
     <input id="namebox" name="name" placeholder="Name" type="text"><br>
-    <input id="agebox" name="date" placeholder="Date" type="date"><br>
-    <input id="agebox" name="category" placeholder="Category" type="text"><br>
-    <input id="agebox" name="value" placeholder="Value" type="text"><br>
+    <?php $curDate = date("d/m/Y");echo $curDate; ?>
+    <input id="datebox" name="date" value="<?php echo htmlspecialchars($curDate); ?>" type="date"><br>
+    <input id="locationbox" name="location" placeholder="Location" type="text"><br>
+    <input id="categorybox" name="category" placeholder="Category" type="text"><br>
+    <input id="valuebox" name="value" placeholder="Value" type="text"><br>
     <button id="submit" style="margin-top:16px;">LOG</button>
     </form>
 </div>
