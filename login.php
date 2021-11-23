@@ -12,7 +12,7 @@
     $result = mysqli_query($conn,"select * from users where username = '$username' and password = '$passwordhashed'")
                 or die("Something hucked up ".mysql_error());
     $row = mysqli_fetch_array($result);
-    if ($row['username'] == $username && password_verify($password,$row['password']) == 1 ){
+    if ($row['username'] == $username && password_verify($password,$row['password']) === true ){
         echo "Login successful! Welcome ".$row['name'];
         $_SESSION['id']=$row['user_id'];
         header('Location: dashboard.php');

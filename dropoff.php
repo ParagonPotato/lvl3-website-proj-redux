@@ -123,12 +123,12 @@
 </html>
 
 <?php
-    if (!isset($_GET['id'])) {
+    if (!isset($_SESSION['id'])) {
         header('Location: index.php');
         exit();
     }
 
-    $id = $_GET['id'];
+    $id = $_SESSION['id'];
 
     $conn = mysqli_connect('localhost','root','','digital');
     $result=mysqli_query($conn,"SELECT * FROM `users` WHERE id='$id'");

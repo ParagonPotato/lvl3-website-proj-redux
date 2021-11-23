@@ -28,11 +28,13 @@ if($row['username']==$username) {
     exit();
 }
 
+$passwordhashed=password_hash($password, PASSWORD_DEFAULT);
+
 if (!$conn) {
 	die("Connection failed: ".mysqli_connect_error());
 } else {
 	$stmt = $conn->prepare("insert into users(username,password) values(?,?)");
-	$stmt->bind_param("ss",$username,$password);
+	$stmt->bind_param("ss",$username,$passwordhashed);
 	$stmt->execute();
     $result=mysqli_query($conn,"SELECT * FROM `users` WHERE username='$username'");
     $row=mysqli_fetch_array($result);

@@ -121,7 +121,7 @@
     $id = $_SESSION['id'];
 
     $conn = mysqli_connect('localhost','root','','digital');
-    $result=mysqli_query($conn,"SELECT * FROM `users` WHERE id='$id'");
+    $result=mysqli_query($conn,"SELECT * FROM `users` WHERE user_id='$id'");
     $row=mysqli_fetch_array($result);
     $username=$row[1];
 ?>
