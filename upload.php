@@ -1,5 +1,5 @@
 <?php
-if (!isset($_GET['id'])) {
+if (!isset($_SESSION['id'])) {
     header('Location: index.php');
     exit();
 }
@@ -31,6 +31,6 @@ if (!$conn) {
 	$stmt->execute();
 	$stmt->close();
 	$conn->close();
-    header('Location: dashboard.php?id='.$id.'&regsuccess=t');
+    header('Location: dashboard.php?regsuccess=t');
 }
 ?>
