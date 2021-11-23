@@ -1,4 +1,5 @@
 <?php
+session_start();
 $serverName = "localhost";
 $dbUsername = "root";
 $dbPassword = "";
@@ -37,6 +38,7 @@ if (!$conn) {
     $row=mysqli_fetch_array($result);
 	$stmt->close();
 	$conn->close();
-    header('Location: dashboard.php?id='.$row[0]);
+    $_SESSION['id']=$row[0];
+    header('Location: dashboard.php');
 }
 ?>
