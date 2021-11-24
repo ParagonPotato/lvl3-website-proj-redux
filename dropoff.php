@@ -139,9 +139,9 @@
 <!DOCTYPE html>
 
 <ul>
-  <li class="navbar" style="float:left;"><a href=<?="dashboard.php?id=".$id?> >lost  /  found</a></li>
+  <li class="navbar" style="float:left;"><a href="dashboard.php" >lost  /  found</a></li>
   <li class="navbar" style="float:left;"><a href="logout.php" style="font-size:12px;letter-spacing:1px;">logout: <?=$username?></a></li>
-  <li class="navbar" style="text-decoration:underline;"><a href="dropoff.php">dropoff</a></li>
+  <li class="navbar" style="text-decoration:underline;"><a href="dropoff.php" >dropoff</a></li>
   <li class="navbar" style="text-decoration:underline;"><a href="pickup.php">pickup</a></li>
   <li class="navbar" style="text-decoration:underline;"><a href="modify.php">modify</a></li>
 </ul>
