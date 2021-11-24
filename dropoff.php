@@ -153,11 +153,11 @@
 <div>
     <h4>Log an item</h4>
     <form action=<?="upload.php?id=".$id?> method="post">
-    <input id="namebox" name="name" placeholder="Name" type="text"><br>
-    <input type = "date" value="<?php  date_default_timezone_set("pacific/auckland"); echo date("Y-m-d"); ?>" name ="date_lost">
-    <input id="locationbox" name="location" placeholder="Location" type="text"><br>
-    <input id="categorybox" name="category" placeholder="Category" type="text"><br>
-    <input id="valuebox" name="value" placeholder="Value" type="text"><br>
+    <input name="name" placeholder="Name" type="text"><br>
+    <input name ="date" value="<?php  date_default_timezone_set("pacific/auckland"); echo date("Y-m-d"); ?>" type="date">
+    <input name="location" placeholder="Location" type="text"><br>
+    <input name="category" placeholder="Category" type="text"><br>
+    <input name="value" placeholder="Value" type="text"><br>
     <button id="submit" style="margin-top:16px;">LOG</button>
     </form>
 </div>
