@@ -150,6 +150,10 @@
 <h1>lost  /  found</h1>
 <h2>login or register to search or upload lost items</h2>
 
+<?php if(isset($_GET['valueerror'])) : ?>
+  <h3>Value entered was not a digit. Give it another whirl.</h3>
+<?php endif; ?>
+
 <div>
     <h4>Log an item</h4>
     <form action="upload.php" method="post">
