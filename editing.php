@@ -1,4 +1,6 @@
 <?php
+    session_start();
+    
     if (!isset($_SESSION['id'])) {
         header('Location: index.php');
         exit();
@@ -28,7 +30,7 @@
     $location = $_POST['location'];
     $category = $_POST['category'];
     $value = $_POST['value'];
-    $status = $_POST['']
+    $status = $_POST['status'];
 
     if(!ctype_digit($value) ) {
         header('Location: dropoff.php?valueerror=t');
@@ -36,12 +38,21 @@
     }
 
     $conn = mysqli_connect($serverName,$dbUsername,$dbPassword,$dbName);
-    mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+        // sql to delete a record
+    $sql = "DELETE FROM `lostitems` WHERE `lost_id`=$itemid";
+
+    if ($conn->query($sql) === TRUE) {
+    echo "Recorded is now deleted";
+    } else {
+    echo "Record couldn't be deleted: " . $conn->error;
+    }
+
     if (!$conn) {
         die("Connection failed: ".mysqli_connect_error());
     } else {
-        $stmt = $conn->prepare("UPDATE `lostitems` (`name`, `date`,`location`, `category`, `value`, `status`) VALUES (?,?,?,?,?,?);");
-        $stmt->bind_param("ssssii",$name, $date, $location, $category, $value, $status);
+        $stmt = $conn->prepare("INSERT INTO `lostitems` (`lost_id`, `name`, `date`,`location`, `category`, `value`, `status`,`poster`) VALUES (?,?,?,?,?,?,?,?);");
+        $stmt->bind_param("issssiii",$itemid,$name, $date, $location, $category, $value, $status, $id);
         $stmt->execute();
         $stmt->close();
         $conn->close();

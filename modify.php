@@ -107,6 +107,22 @@
       width:60%;
     }
 
+    tr:nth-child(even) {
+      background-color:gray;
+    }
+
+    a.link {
+        color:black;
+    }
+
+    td {
+        text-align:center;
+        font-size:18px;
+    }
+
+    label {
+        font-size:16px;
+    }
   </style>
   <title>Lost / Found / Dashboard</title>
 </header>
@@ -138,4 +154,55 @@
 
 
 <h1>modify</h1>
-<h2>modify your items</h2>
+<h2>modify your items (click on the item's name to modify it)</h2>
+
+<form action="modify.php?modify=t" method="post">
+  <input name="search" placeholder="Search for keywords (search with nothing to see all entries)" text="text">
+  <button type="submit">Search</button>
+</form>
+
+<?php if(isset($_GET['itemid'])) : ?>
+
+    <form action="editing.php" method="post">
+        <input name="name" placeholder="Name" type="text" required><br>
+        <input name ="date" value="<?php  date_default_timezone_set("pacific/auckland"); echo date("Y-m-d"); ?>" type="date" required><br>
+        <input name="location" placeholder="Location" type="text" required><br>
+        <input name="category" placeholder="Category" type="text" required><br>
+        <input name="value" placeholder="Value" type="text" required><br>
+        <input name="status" value="0" type=radio style="width:2%;" checked="checked"><label>Still Lost</label>
+        <input name="status" value="1" type=radio style="width:2%"><label>Found</label><br>
+        <button id="submit" style="margin-top:16px;">Update</button>
+    </form>
+<?php endif; ?>
+
+
+
+
+<table>
+  <tr>
+    <th style='width:40%;'>Name</th>
+    <th style='width:14%' >Date Lost</th>
+    <th style='width:14%' >Location Found</th>
+    <th style='width:14%' >Category</th>
+    <th style='width:14%' >Value</th>
+    <th style='width:4%;'>Status</th>
+  </tr>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <?php
+    if (isset($_POST['search'])) {
+      require "search.php";
+      if (count($results) > 0) {
+        foreach ($results as $row) {
+          echo "<tr><td style='width:40%;'><a class='link' href='modify.php?itemid=".$row["lost_id"]."' >" . $row["name"] . "</a></td><td>" . $row["date"] . "</td><td>" . $row["location"] . "</td><td>" . $row["category"] . "</td><td>~$" . $row["value"] . "</td><td style='width:3%;'>" . $row["status"] . "</td></tr>";
+        }
+      } else { echo "<div>No entries found</div>";}
+    }
+  ?>
+</table>

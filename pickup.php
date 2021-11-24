@@ -111,6 +111,10 @@
       background-color:gray;
     }
 
+    button {
+      height: 27px;
+    }
+
   </style>
   <title>Lost / Found / Dashboard</title>
 </header>
@@ -145,17 +149,24 @@
 <h2>search the database of lost items</h2>
 
 <form action="pickup.php" method="post">
-  <input name="search" placeholder="Search (search with nothing to see all entries)" text="text"/>
-  <input type="submit" value="Search"/>
+  <input name="search" placeholder="Search for keywords (search with nothing to see all entries)" text="text">
+  <button type="submit">Search</button>
 </form>
 
 <table>
+<tr>
+    <th style='width:40%;'>Name</th>
+    <th style='width:14%' >Date Lost</th>
+    <th style='width:14%' >Location Found</th>
+    <th style='width:14%' >Category</th>
+    <th style='width:14%' >Value</th>
+  </tr>
   <tr>
-    <th>Name</th>
-    <th>Date Lost</th>
-    <th>Location Found</th>
-    <th>Category</th>
-    <th>Value</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
   </tr>
   <?php
     if (isset($_POST['search'])) {

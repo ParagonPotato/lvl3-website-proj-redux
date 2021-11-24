@@ -15,6 +15,7 @@
     if ($row['username'] == $username && password_verify($password,$row[2]) ){
         echo "Login successful! Welcome ".$row['name'];
         $_SESSION['id']=$row['user_id'];
+        $_SESSION['admin']=$row['admin'];
         header('Location: dashboard.php');
     } else {
         echo password_verify($password,$row[2]);
