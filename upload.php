@@ -19,8 +19,9 @@ $category = $_POST['category'];
 $value = $_POST['value'];
 $poster = $_POST[$id];
 
-if (!ctype_digit($value)) {
+if(!ctype_digit($value) ) {
 	header('Location: dropoff.php?valueerror=t');
+	exit();
 }
 
 $conn = mysqli_connect($serverName,$dbUsername,$dbPassword,$dbName);
