@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <html>
 <header>
   <style>
@@ -112,15 +113,15 @@
 </html>
 
 <?php
-    if (!isset($_GET['id'])) {
+    if (!isset($_SESSION['id'])) {
         header('Location: index.php');
         exit();
     }
 
-    $id = $_GET['id'];
+    $id = $_SESSION['id'];
 
     $conn = mysqli_connect('localhost','root','','digital');
-    $result=mysqli_query($conn,"SELECT * FROM `users` WHERE id='$id'");
+    $result=mysqli_query($conn,"SELECT * FROM `users` WHERE user_id='$id'");
     $row=mysqli_fetch_array($result);
     $username=$row[1];
 ?>
@@ -128,9 +129,9 @@
 <!DOCTYPE html>
 
 <ul>
-  <li class="navbar" style="float:left;"><a href=<?="dashboard.php?id=".$id?> >lost  /  found</a></li>
+  <li class="navbar" style="float:left;"><a href="dashboard.php" >lost  /  found</a></li>
   <li class="navbar" style="float:left;"><a href="logout.php" style="font-size:12px;letter-spacing:1px;">logout: <?=$username?></a></li>
-  <li class="navbar" style="text-decoration:underline;"><a href=<?="dropoff.php?id=".$id?> >dropoff</a></li>
+  <li class="navbar" style="text-decoration:underline;"><a href="dropoff.php" >dropoff</a></li>
   <li class="navbar" style="text-decoration:underline;"><a href="pickup.php">pickup</a></li>
   <li class="navbar" style="text-decoration:underline;"><a href="modify.php">modify</a></li>
 </ul>
