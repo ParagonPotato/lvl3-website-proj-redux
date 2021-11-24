@@ -107,6 +107,10 @@
       width:60%;
     }
 
+    tr:nth-child(even) {
+      background-color:gray;
+    }
+
   </style>
   <title>Lost / Found / Dashboard</title>
 </header>
@@ -137,5 +141,30 @@
 </ul>
 
 
-<h1>lost  /  found</h1>
+<h1>pickup</h1>
 <h2>search the database of lost items</h2>
+
+<form action="pickup.php" method="post">
+  <input name="search" placeholder="Search (search with nothing to see all entries)" text="text"/>
+  <input type="submit" value="Search"/>
+</form>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Date Lost</th>
+    <th>Location Found</th>
+    <th>Category</th>
+    <th>Value</th>
+  </tr>
+  <?php
+    if (isset($_POST['search'])) {
+      require "search.php";
+      if (count($results) > 0) {
+        foreach ($results as $row) {
+          echo "<tr><td>" . $row["name"] . "</td><td>" . $row["date"] . "</td><td>" . $row["location"] . "</td><td>" . $row["category"] . "</td><td>~$" . $row["value"] . "</td></tr>";
+        }
+      } else { echo "<div>No entries found</div>";}
+    }
+  ?>
+</table>
