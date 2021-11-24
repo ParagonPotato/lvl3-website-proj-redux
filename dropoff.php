@@ -147,7 +147,7 @@
 </ul>
 
 
-<h1>lost  /  found</h1>
+<h1>dropoff</h1>
 <h2>login or register to search or upload lost items</h2>
 
 <?php if(isset($_GET['valueerror'])) : ?>
