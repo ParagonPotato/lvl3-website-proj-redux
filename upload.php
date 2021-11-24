@@ -19,11 +19,9 @@ $category = $_POST['category'];
 $value = $_POST['value'];
 $poster = $_POST[$id];
 
-if(empty($name)) { header('Location: dropoff.php?lognameempty=t');exit(); }
-if(empty($date)) { header('Location: dropoff.php?logdateempty=t');exit(); }
-if(empty($location)) { header('Location: dropoff.php?loglocationempty=t');exit(); }
-if(empty($category)) { header('Location: dropoff.php?logcategoryempty=t');exit(); }
-if(empty($value)) { header('Location: dropoff.php?logvalueempty=t');exit(); }
+if (!ctype_digit($value)) {
+	header('Location: dropoff.php?valueerror=t');
+}
 
 $conn = mysqli_connect($serverName,$dbUsername,$dbPassword,$dbName);
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
