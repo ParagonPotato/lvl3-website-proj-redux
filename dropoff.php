@@ -152,7 +152,7 @@
 
 <div>
     <h4>Log an item</h4>
-    <form action=<?="upload.php?id=".$id?> method="post">
+    <form action="upload.php" method="post">
     <input name="name" placeholder="Name" type="text"><br>
     <input name ="date" value="<?php  date_default_timezone_set("pacific/auckland"); echo date("Y-m-d"); ?>" type="date">
     <input name="location" placeholder="Location" type="text"><br>
