@@ -41,6 +41,7 @@ if (!$conn) {
 	$stmt->close();
 	$conn->close();
     $_SESSION['id']=$row[0];
+    $_SESSION['admin']=$row['admin'];
     header('Location: dashboard.php');
 }
 ?>
