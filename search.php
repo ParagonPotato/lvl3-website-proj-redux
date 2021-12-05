@@ -7,6 +7,12 @@ define("DB_CHARSET","utf8");
 define("DB_USER", "root");
 define("DB_PASSWORD","");
 
+$conn = mysqli_connect('localhost','root','','digital');
+    if(!$conn) {
+      header("Location: index.php?databaseconnerr=t");
+      exit();
+    }
+
 //Connection
 $pdo = new PDO(
     "mysql:host=".DB_HOST.";charset=".DB_CHARSET.";dbname=".DB_NAME,

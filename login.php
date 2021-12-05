@@ -8,7 +8,10 @@
     //connect to database
     $conn = mysqli_connect("localhost","root","","digital");
 
-    if
+    if(!$conn) {
+        header("Location: index.php?databaseconnerr=t");
+        exit();
+    }
 
     //querying
     $result = mysqli_query($conn,"select * from users where username = '$username'")

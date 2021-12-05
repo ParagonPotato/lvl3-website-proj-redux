@@ -160,6 +160,9 @@
 <?php if(isset($_GET['regpasswordempty'])) : ?>
   <h3>Password field is required!</h3>
 <?php endif; ?>
+<?php if(isset($_GET['databaseconnerr'])) : ?>
+  <h3>! Connection to database was lost. Hopefully it will be back online soon, come back then. !</h3>
+<?php endif; ?>
 </div>
 
 <table>

@@ -17,6 +17,10 @@
     $itemid = $_GET['itemid'];
 
     $conn = mysqli_connect('localhost','root','','digital');
+    if(!$conn) {
+        header("Location: index.php?databaseconnerr=t");
+        exit();
+    }
     $result=mysqli_query($conn,"SELECT * FROM `lostitems` WHERE `lost_id`='$itemid'");
     $row=mysqli_fetch_array($result);
     $originalposter=$row['poster'];
