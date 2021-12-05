@@ -32,6 +32,11 @@
       margin-bottom:30px;
     }
 
+    h3 {
+      font-size:12px;
+      color:red;
+    }
+
     input {
       width:10%;
       height:10%;
@@ -105,6 +110,10 @@
 
     input {
       width:60%;
+    }
+    
+    button {
+      height: 27px;
     }
 
     tr:nth-child(even) {
@@ -184,7 +193,9 @@
     </form>
 <?php endif; ?>
 
-
+<?php if(isset($_GET['valueerror'])) : ?>
+  <h3>Value entered was not a digit. Give it another whirl.</h3>
+<?php endif; ?>
 
 
 <table>

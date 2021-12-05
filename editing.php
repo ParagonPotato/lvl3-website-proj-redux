@@ -37,8 +37,8 @@
     $value = $_POST['value'];
     $status = $_POST['status'];
 
-    if(!ctype_digit($value) ) {
-        header('Location: dropoff.php?valueerror=t');
+    if(preg_match("/[a-z]/i", $value)){
+        header('Location: modify.php?valueerror=t');
         exit();
     }
 
@@ -57,7 +57,7 @@
         die("Connection failed: ".mysqli_connect_error());
     } else {
         $stmt = $conn->prepare("INSERT INTO `lostitems` (`lost_id`, `name`, `date`,`location`, `category`, `value`, `status`,`poster`) VALUES (?,?,?,?,?,?,?,?);");
-        $stmt->bind_param("issssiii",$itemid,$name, $date, $location, $category, $value, $status, $originalposter);
+        $stmt->bind_param("issssdii",$itemid,$name, $date, $location, $category, $value, $status, $originalposter);
         $stmt->execute();
         $stmt->close();
         $conn->close();

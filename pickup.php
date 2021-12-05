@@ -111,6 +111,11 @@
       background-color:gray;
     }
 
+    td {
+        text-align:center;
+        font-size:18px;
+    }
+
     button {
       height: 27px;
     }
@@ -133,6 +138,7 @@
       header("Location: index.php?databaseconnerr=t");
       exit();
     }
+
     $result=mysqli_query($conn,"SELECT * FROM `users` WHERE user_id='$id'");
     $row=mysqli_fetch_array($result);
     $username=$row[1];

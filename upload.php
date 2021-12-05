@@ -19,7 +19,7 @@ $category = $_POST['category'];
 $value = $_POST['value'];
 $poster = $_POST[$id];
 
-if(!ctype_digit($value) ) {
+if(preg_match("/[a-z]/i", $value)){
 	header('Location: dropoff.php?valueerror=t');
 	exit();
 }
@@ -29,7 +29,7 @@ if (!$conn) {
 	die("Connection failed: ".mysqli_connect_error());
 } else {
 	$stmt = $conn->prepare("INSERT INTO `lostitems` (`name`, `date`,`location`, `category`, `value`, `poster`) VALUES (?,?,?,?,?,?);");
-	$stmt->bind_param("ssssii",$name, $date, $location, $category, $value, $id);
+	$stmt->bind_param("ssssfi",$name, $date, $location, $category, $value, $id);
 	$stmt->execute();
 	$stmt->close();
 	$conn->close();
