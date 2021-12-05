@@ -80,7 +80,7 @@
       background-color: white;
     }
 
-    li a {
+    li a, li h5 {
       font-weight: 700;
       font-size: 46px;
       text-transform:uppercase;
@@ -93,11 +93,17 @@
       transition-property: font-style,color;
       transition-timing-function: ease;
       transition-duration: 0.4s;
+      margin:0px;
     }
 
     li.navbar a:hover {
       font-style:italic;
       color:black;
+    }
+
+    li.nohover:hover {
+      background:black;
+      cursor:default;
     }
 
     input {
@@ -125,6 +131,17 @@
 
 <ul>
   <li class="navbar" style="float:left;"><a href="index.php">lost  /  found</a></li>
+  <?php
+  
+    $conn = @mysqli_connect("localhost","root","","digital");
+    $database_status = "Online";
+    $database_status_color="#11ca4c";
+    if(!$conn) {
+      $database_status = "Offline";
+      $database_status_color = "#c00";
+    }
+  ?>
+  <li class="navbar nohover" style="float:left;"><h5 style="font-size:12px;letter-spacing:1px;"><span style="background: <?php echo $database_status_color ?>;border-radius:50%;display:inline-block;height:6px;vertical-algin: middle;width:6px;margin-right:8px;"></span>Database Status: <?=$database_status ?></h5></li>
 </ul>
 
 

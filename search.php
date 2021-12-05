@@ -22,14 +22,14 @@ $stmt->execute([
     "%".$_POST['search']."%", "%".$_POST['search']."%", "%".$_POST['search']."%", "%".$_POST['search']."%", "%".$_POST['search']."%"
 ]);
 
-if(isset($_GET['modify'])) {
+if($_SESSION['admin']=="0") {
     $stmt = $pdo->prepare("SELECT * FROM `lostitems` WHERE `name` LIKE ? AND `poster` = ".$_SESSION['id']);
     $stmt->execute([
         "%".$_POST['search']."%"
     ]);
 }
 
-if(isset($_GET['modifyadmin'])) {
+if($_SESSION['admin']=="1") {
     $stmt = $pdo->prepare("SELECT * FROM `lostitems` WHERE `name` LIKE ?");
     $stmt->execute([
         "%".$_POST['search']."%"

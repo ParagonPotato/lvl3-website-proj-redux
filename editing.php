@@ -2,6 +2,7 @@
     session_start();
     
     if (!isset($_SESSION['id'])) {
+        echo 'Couldnt user id';
         header('Location: index.php');
         exit();
     }
@@ -9,16 +10,16 @@
     $id = $_SESSION['id'];
 
     if (!isset($_GET['itemid'])) {
+        echo 'Couldnt get item id';
         header('Location: index.php');
         exit();
     }
-
     $itemid = $_GET['itemid'];
 
     $conn = mysqli_connect('localhost','root','','digital');
-    $result=mysqli_query($conn,"SELECT * FROM `users` WHERE user_id='$id'");
+    $result=mysqli_query($conn,"SELECT * FROM `lostitems` WHERE `lost_id`='$itemid'");
     $row=mysqli_fetch_array($result);
-    $username=$row[1];
+    $originalposter=$row['poster'];
 
     $serverName = "localhost";
     $dbUsername = "root";
@@ -52,7 +53,7 @@
         die("Connection failed: ".mysqli_connect_error());
     } else {
         $stmt = $conn->prepare("INSERT INTO `lostitems` (`lost_id`, `name`, `date`,`location`, `category`, `value`, `status`,`poster`) VALUES (?,?,?,?,?,?,?,?);");
-        $stmt->bind_param("issssiii",$itemid,$name, $date, $location, $category, $value, $status, $id);
+        $stmt->bind_param("issssiii",$itemid,$name, $date, $location, $category, $value, $status, $originalposter);
         $stmt->execute();
         $stmt->close();
         $conn->close();

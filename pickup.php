@@ -116,7 +116,7 @@
     }
 
   </style>
-  <title>Lost / Found / Dashboard</title>
+  <title>Lost / Found / Pickup</title>
 </header>
 </html>
 

@@ -124,7 +124,7 @@
         font-size:16px;
     }
   </style>
-  <title>Lost / Found / Dashboard</title>
+  <title>Lost / Found / Modify</title>
 </header>
 </html>
 
@@ -162,13 +162,18 @@
 </form>
 
 <?php if(isset($_GET['itemid'])) : ?>
-
-    <form action="editing.php" method="post">
-        <input name="name" placeholder="Name" type="text" required><br>
-        <input name ="date" value="<?php  date_default_timezone_set("pacific/auckland"); echo date("Y-m-d"); ?>" type="date" required><br>
-        <input name="location" placeholder="Location" type="text" required><br>
-        <input name="category" placeholder="Category" type="text" required><br>
-        <input name="value" placeholder="Value" type="text" required><br>
+  <?php
+    $itemid=$_GET['itemid'];
+    $result=mysqli_query($conn,"SELECT * FROM `lostitems` WHERE `lost_id`='$itemid'");
+    $row=mysqli_fetch_array($result);
+  ?>
+    <form action="editing.php?itemid=<?php echo $itemid; ?>" method="post">
+        <h2>Editing: <?php echo $row['name']; ?></h2>
+        <input name="name" placeholder="Name" type="text" value="<?php echo $row['name']?>" required><br>
+        <input name ="date" value="<?php  echo $row['date']; ?>" type="date" required><br>
+        <input name="location" placeholder="Location" type="text" value="<?php echo $row['location']?>" required><br>
+        <input name="category" placeholder="Category" type="text" value="<?php echo $row['category']?>" required><br>
+        <input name="value" placeholder="Value" type="text" value="<?php echo $row['value']?>" required><br>
         <input name="status" value="0" type=radio style="width:2%;" checked="checked"><label>Still Lost</label>
         <input name="status" value="1" type=radio style="width:2%"><label>Found</label><br>
         <button id="submit" style="margin-top:16px;">Update</button>
